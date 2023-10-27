@@ -1,6 +1,5 @@
 def solution(x):
-    arr = list(map(int, str(x)))
-    num = sum(arr)
+    num = sum(map(int, str(x)))
     if x % num == 0:
         return True
     else:
