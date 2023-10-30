@@ -3,7 +3,5 @@ def solution(arr, divisor):
     for i in arr:
         if i % divisor == 0:
             answer.append(i)
-    if len(answer) == 0:
-        return [-1]
     answer.sort()
-    return answer
+    return answer or [-1]
