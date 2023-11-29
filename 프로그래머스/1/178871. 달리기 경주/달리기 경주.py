@@ -1,5 +1,5 @@
 def solution(players, callings):
-    player = {play : i for i, play in enumerate(players)}
+    player = {players[i] : i for i in range(len(players))}
     for calling in callings:
         idx = player[calling]
         
