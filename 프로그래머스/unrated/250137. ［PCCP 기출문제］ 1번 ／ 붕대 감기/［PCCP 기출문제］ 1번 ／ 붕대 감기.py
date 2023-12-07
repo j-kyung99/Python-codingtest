@@ -14,6 +14,7 @@ def solution(bandage, health, attacks):
             con += 1
             if con >= time:
                 answer += sec + plus
+                con = 0
             else:
                 answer += sec
             
