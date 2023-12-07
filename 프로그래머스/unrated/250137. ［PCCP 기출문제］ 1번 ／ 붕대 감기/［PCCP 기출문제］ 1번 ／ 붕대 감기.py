@@ -1,38 +1,23 @@
 def solution(bandage, health, attacks):
-
-    maxhealth = health
-    maxtime = attacks[-1][0]
-    attack_dict = {}
-    for i in attacks:
-        attack_dict[i[0]]=i[1]
-
-    t=0
-
-    continue_sec = 0
-
-    while t<=maxtime:
-
-        if t in attack_dict:
-            health -= attack_dict[t]
-            continue_sec=0
-
-            # 공격을 맞고 체력이 -1
-            if health <=0:
+    answer = health
+    time, sec, plus = bandage
+    attacks_dic = {attack[0]: attack[1] for attack in attacks}
+    max_time = attacks[-1][0]
+    con = 0
+    for i in range(1, max_time + 1):
+        if i in attacks_dic:
+            answer -= attacks_dic[i]
+            con = 0
+            if answer <= 0:
                 return -1
-
         else:
-            continue_sec += 1
-            if continue_sec < bandage[0]:
-                health += bandage[1]
-                if health>maxhealth:
-                    health = maxhealth
-
+            con += 1
+            if con >= time:
+                answer += sec + plus
             else:
-                health = health + bandage[1] + bandage[2]
-                if health>maxhealth:
-                    health = maxhealth
-                continue_sec=0
-
-        t+=1
-
-    return health
+                answer += sec
+            
+            if answer > health:
+                answer = health
+        
+    return answer
